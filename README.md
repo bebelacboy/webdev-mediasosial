@@ -14,3 +14,7 @@
 12. Jalankan "npx sequelize db:migrate" (Membentuk tabel-tabel di db webdev-mediasosial)
 13. Jalankan "npm start" (Express akan berjalan di port 5000)
 14. Akses aplikasi web melalui React (http://localhost:3000)
+
+Pada backend terdapat file environment (.env)
+
+Fitur yang jadi baru autentikasi, liat post orang, sama add post (error dikit pas submit agak lama terus redirectnya gajelas tapi masuk ke db), semua api sebenernya udah kebikin tapi frontendnya ga kekejer.
