@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    refreshToken: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
     bio: {
       type: DataTypes.STRING,
       allowNull: true

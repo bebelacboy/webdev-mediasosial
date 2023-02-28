@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      refreshToken: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
       bio: {
         type: Sequelize.STRING,
         allowNull: true
