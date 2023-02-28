@@ -2,16 +2,17 @@ var express = require('express');
 var router = express.Router();
 const Validator = require("fastest-validator");
 const { Post, User } = require("../models");
+const verifyToken = require('../middleware/verify_token');
 
 const v = new Validator();
 
-router.get("/", async (req, res) => {
+router.get("/", verifyToken, async (req, res) => {
   const listPost = await Post.findAll();
   return res.json(listPost);
 });
 
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", verifyToken, async (req, res) => {
   const id = req.params.id;
   const post = await Post.findByPk(id);
   if (!post) {
@@ -20,10 +21,10 @@ router.get("/:id", async (req, res) => {
   return res.json(post);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   const schema = {
     user: "string",
-    postId: "number|optional",
+    // postId: "number|optional",
     content: "string",
   };
 
@@ -43,7 +44,7 @@ router.post("/", async (req, res) => {
   res.json(post);
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", verifyToken, async (req, res) => {
   const id = req.params.id;
   const schema = {
     content: "string|optional", // short-hand def
@@ -61,7 +62,7 @@ router.put("/:id", async (req, res) => {
   res.json(post);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", verifyToken, async (req, res) => {
   const id = req.params.id;
 
   const post = await Post.findByPk(id);
